@@ -7,7 +7,7 @@ CENTOS="8"
 FEDORA="33"
 ARCH="latest"
 OPENSUSE="15"
-ALPINE="3.8"
+ALPINE="3.10"
 
 
 # Default Yes/No options
