@@ -16,4 +16,15 @@ sudo dnf install -y \
 sudo dnf remove -y \
 		rxvt-unicode
 
+curl -O https://downloads.vivaldi.com/stable/vivaldi-stable.x86_64.rpm
+sudo dnf install ./vivaldi-stable.x86_64.rpm -y
+
+# Setup Node.js
+
+nodeenv ~/node
+
+echo "alias n='source ~/node/bin/activate'" >> ~/.bashrc
+
+# Execute i3 on 'startx' command
+
 echo "exec i3" >> $HOME/.xinitrc
