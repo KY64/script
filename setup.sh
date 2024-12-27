@@ -13,6 +13,8 @@ sudo dnf install -y \
 		st \
 		htop
 
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 sudo dnf remove -y \
 		rxvt-unicode
 
