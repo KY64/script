@@ -12,6 +12,14 @@ sudo dnf install -y \
 		st \
 		htop
 
+# Download latest Neovim
+
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo dnf remove neovim -y
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 sudo dnf remove -y \
@@ -44,4 +52,19 @@ echo "exec i3" >> $HOME/.xinitrc
 # Find "Tapping Enabled" and the most right value should be 1, if not then we can set the value like following
 # 	sudo xinput set-prop <device-id> <props-id> 1
 # The props ID is a number inside a bracket, for example "libinput Tapping Enabled (319)" has props ID 319
+# Update the configuration file so the settings would persist over reboot by editing /usr/share/X11/xorg.conf.d/40-libinput.conf
+# Then add the following configuration on 'touchpad' device configuration
+#       Option "Tapping" "on"
 #
+# 2. Brightness Hotkey
+# If brightness hotkey does not work, install 'brightnessctl'
+#       sudo dnf install brightnessctl
+# After that update the i3 config by adding the following
+#       bindsym XF86MonBrightnessUp exec brightnessctl s +10%
+#       bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+# If the screen is too bright, there is also another way to set the monitor output
+#       xrandr --output <output-name> --brightness <number 0 - 1>
+# The output name can be found by running
+#       xrandr --listmonitors
+# The 'xrandr' configuration change does not persist on reboot so putting it
+# on i3 config could be a workaround
