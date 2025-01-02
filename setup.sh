@@ -9,8 +9,12 @@ sudo dnf install -y \
 		podman \
 		git \
 		i3 \
-		st \
+		xfce4-terminal \
 		htop
+
+# Enable RPMFusion and EPEL
+sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 
 # Download latest Neovim
 
