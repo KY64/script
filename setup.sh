@@ -10,6 +10,7 @@ sudo dnf install -y \
 		git \
 		xfwm4 \
                 thunar \
+                network-manager-applet \
                 xfce4-notifyd \
                 xfce4-session \
                 xfce4-appfinder \
