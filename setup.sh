@@ -5,6 +5,8 @@
 sudo dnf install -y \
 		xorg-x11-xinit \
 		xorg-x11-server-Xorg \
+                xorg-x11-drv-libinput \
+                libinput \
 		python3-nodeenv \
 		podman \
 		git \
