@@ -45,7 +45,7 @@ sudo dnf install ./vivaldi-stable.x86_64.rpm -y
 
 # Setup Node.js
 
-nodeenv ~/node
+nodeenv -n lts ~/node
 
 echo "alias n='source ~/node/bin/activate'" >> ~/.bashrc
 
