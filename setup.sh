@@ -3,55 +3,41 @@
 # This setup is for Centos Stream
 
 sudo dnf install -y \
-		xorg-x11-xinit \
-		xorg-x11-server-Xorg \
-                xorg-x11-drv-libinput \
-                libinput \
 		python3-nodeenv \
 		podman \
 		git \
-		xfwm4 \
-                thunar \
-                network-manager-applet \
-                xfce4-notifyd \
-                xfce4-session \
-                xfce4-appfinder \
-                xfce4-panel \
-                xfce4-power-manager \
-                xfce4-settings \
-                xfce4-pulseaudio-plugin \
-		xfce4-terminal \
-		htop
+		htop \
+                neovim
 
 # Enable RPMFusion and EPEL
 sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E %rhel).noarch.rpm
 sudo dnf install -y https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-$(rpm -E %rhel).noarch.rpm https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-$(rpm -E %rhel).noarch.rpm
 
-# Download latest Neovim
-
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo dnf remove neovim -y
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-
-echo 'export PATH="$PATH:/opt/nvim-linux64/bin"' >> ~/.bashrc
+# Flatpak
 
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo -y
 
-sudo dnf remove -y \
-		rxvt-unicode
+## Install flatpak app
+# Slack
+# flatpak install flathub com.slack.Slack
+# LibreOffice
+# flatpak install flathub org.libreoffice.LibreOffice
+# Telegram
+# flatpak install flathub org.telegram.desktop
+# Discord
+# flatpak install flathub com.discordapp.Discord
 
+# Install vivaldi browser
 curl -O https://downloads.vivaldi.com/stable/vivaldi-stable.x86_64.rpm
 sudo dnf install ./vivaldi-stable.x86_64.rpm -y
 
-# Setup Node.js
+# Remove firefox
+sudo dnf remove firefox -y
 
+# Setup Node.js
 nodeenv -n lts ~/node
 
 echo "alias n='source ~/node/bin/activate'" >> ~/.bashrc
-
-# Execute window manager on 'startx' command
-
-echo "exec startxfce4" >> $HOME/.xinitrc
 
 # Next instruction:
 
