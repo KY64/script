@@ -4,6 +4,7 @@
 
 sudo dnf install -y \
 		python3-nodeenv \
+                python3-pip \
 		podman \
 		git \
 		htop \
